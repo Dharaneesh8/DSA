@@ -1,0 +1,56 @@
+public class Main{
+    public static void main(String[] args){
+        LinkedList list=new LinkedList();
+        
+        
+        list.insertAtBegin(3);
+        list.insertAtBegin(2);
+        list.insertAtBegin(1);
+        
+        list.insertAtIndex(2,4);
+        list.display();
+    }
+}
+class Node{
+    int data;
+    Node next;
+    
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class LinkedList{
+    
+    Node head=null;
+    
+     void insertAtBegin(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+    
+    void insertAtIndex(int index,int data){
+        if(index<0){
+            System.out.println("Invalid input");
+            return;
+        }
+        Node temp=head;
+        for(int i=0;i<index-1;i++){
+            temp=temp.next;
+        }
+        Node newNode=new Node(data);
+        newNode.next=temp.next;
+        temp.next=newNode;
+    }
+    
+    void display(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.print("null");
+    }
+    
+}
